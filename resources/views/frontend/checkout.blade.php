@@ -21,7 +21,7 @@
         <div class="row">
             <div class="col col-xs-12">
             <div class="woocommerce bg-light p-3">
-                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="{{url('/order/insert')}}">
+                <form name="checkout" method="post" class="checkout woocommerce-checkout" action="{{url('/order/placed')}}">
                     @csrf
                     <div class="col2-set" id="customer_details">
                         <div class="coll-1">
@@ -58,7 +58,7 @@
                             <p class="form-row form-row form-row-last address-field update_totals_on_change validate-required" id="billing_country_field">
                                 <label for="city_id" class="">City <abbr class="required" title="required">*</abbr></label>
                                 <select name="city_id" id="city_id" autocomplete="city" class="city_to_state city_select ">
-                                    <option value="">Select a country&hellip;</option>    
+                                    <option value="">Select a city&hellip;</option>    
                                 </select>
                             </p>
                             <p class="form-row form-row form-row-wide address-field validate-required" id="billing_address_1_field">
@@ -99,7 +99,7 @@
                             <tr>                            
                                 <td>
                                     <h6>Select Location</h6>
-                                    <input type="radio" class="input_delivery_charge" name="delivery_charge" id="inside_city" value="60">
+                                    <input type="radio" class="input_delivery_charge" name="delivery_charge" id="inside_city" checked='checked' value="60">
                                     <label for="inside_city">Inside City</label>
                                     <br>
                                     <input type="radio" class="input_delivery_charge" name="delivery_charge" id="outside_city" value="100">

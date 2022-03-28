@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Customer;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,10 @@ class FrontendController extends Controller
 
     public function customer_account()
     {
-        return view('frontend.customer_account');
+        $orders = Order::where('user_id', Auth::guard('customer')->id())->get();
+        return view('frontend.customer_account', [
+            'orders'=>$orders,
+        ]);
     }
 
     public function customer_account_update(Request $request)

@@ -59,23 +59,23 @@
                             <tr>
                                 <th>SL</th>
                                 <th>Order No</th>
-                                <th>Sub Total</th>
                                 <th>Discount</th>
                                 <th>Delivery Charge</th>
                                 <th>Total</th>
                                 <th>Action</th>
                             </tr>
+                            @foreach ($orders as $key=>$order)                                
                             <tr>
-                                <td>1</td>
-                                <td>#120</td>
-                                <td>52500</td>
-                                <td>200</td>
-                                <td>100</td>
-                                <td>52400</td>
+                                <td>{{ $key+1 }}</td>
+                                <td>#{{ $order->id }}</td>
+                                <td>{{ $order->discount }}</td>
+                                <td>{{ $order->delivery_charge }}</td>
+                                <td>{{ $order->sub_total }}</td>
                                 <td>
                                     <a href="#" class="btn btn-primary">Download Invoice</a>
                                 </td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>

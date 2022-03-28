@@ -172,9 +172,9 @@
                                         </button>
                                         <ul class="main_menu_list ul_li">
                                             <li><a class="nav-link" href="{{url('/')}}">Home</a></li>
-                                            <li><a class="nav-link" href="#">About us</a></li>
+                                            <li><a class="nav-link" href="{{ url('/about') }}">About us</a></li>
                                             <li><a class="nav-link" href="{{url('/shop/grid')}}">Shop</a></li>
-                                            <li><a class="nav-link" href="#">Contact Us</a></li>
+                                            <li><a class="nav-link" href="{{ url('/contact') }}">Contact Us</a></li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -257,7 +257,8 @@
                     <p>Get E-mail updates about our latest products and special offers.</p>
                 </div>
                 <div class="col col-lg-6">
-                    <form action="#!">
+                    <form action="{{ url('/subscribe/submit') }}" method="POST">
+                        @csrf
                         <div class="newsletter_form">
                             <input type="email" name="email" placeholder="Enter your email address">
                             <button type="submit" class="btn btn_secondary">Submit</button>

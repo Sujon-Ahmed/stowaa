@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CustomerAuthenticationController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController;
@@ -13,6 +15,8 @@ use App\Http\Controllers\subcategoryController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ShopGridController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\SubscriberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +46,16 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/product/details/{product_id}', [FrontendController::class, 'product_details'])->name('product.details');
 Route::get('/customer/account/', [FrontendController::class, 'customer_account']);
 Route::post('/account/update', [FrontendController::class, 'customer_account_update']);
+
+// about 
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+
+// contact
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact/message/insert', [ContactController::class, 'contact_message_insert']);
+Route::get('/contact/messages', [ContactController::class, 'contact_messages'])->name('contact.messages');
+Route::get('/contact/message/delete/{id}', [ContactController::class, 'contact_message_delete'])->name('contact.message.delete');
+
 
 // wishlist
 Route::get('/wishlist', [WishlistController::class, 'wishlist'])->name('wishlist');
@@ -106,6 +120,22 @@ Route::get('/coupon/delete/{id}', [CouponController::class, 'delete']);
 Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
 // orders
-Route::post('/order/insert', [CheckoutController::class, 'order_insert']);
+Route::post('/order/placed', [CheckoutController::class, 'order_insert']);
 Route::post('/getCity', [CheckoutController::class, 'getCity']);
 Route::get('/order/confirm', [CheckoutController::class, 'order_confirm'])->name('ordered_confirm');
+
+// SSLCOMMERZ Start
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+
+// subscribers
+Route::post('/subscribe/submit', [SubscriberController::class, 'index'])->name('subscriber.insert');

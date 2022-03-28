@@ -823,6 +823,15 @@
                             <li><a href="{{route('add.coupon')}}">Add Coupon</a></li>
                         </ul>
                     </li>
+					{{-- contact --}}
+					<li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-381-layer-1"></i>
+                        <span class="nav-text">Contact</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('contact.messages')}}">Messages</a></li>
+                        </ul>
+                    </li>
                 </ul>
 			</div>
         </div>
