@@ -169,7 +169,7 @@
                             <h4 class="reviews_tab_title">2 reviews for this product</h4>
                             <div class="customer_review_item clearfix">
                                 <div class="customer_image">
-                                    <img src="assets/images/team/team_1.jpg" alt="image_not_found">
+                                    <img src="{{asset('frontend_assets/images/team/team_1.jpg') }}" alt="image_not_found">
                                 </div>
                                 <div class="customer_content">
                                     <div class="customer_info">
@@ -189,7 +189,7 @@
 
                             <div class="customer_review_item clearfix">
                                 <div class="customer_image">
-                                    <img src="assets/images/team/team_2.jpg" alt="image_not_found">
+                                    <img src="{{asset('frontend_assets/images/team/team_2.jpg') }}" alt="image_not_found">
                                 </div>
                                 <div class="customer_content">
                                     <div class="customer_info">
