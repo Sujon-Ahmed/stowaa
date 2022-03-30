@@ -56,4 +56,31 @@ class FrontendController extends Controller
         return view('frontend.wishlist');
     }
 
+    public function productListAjax()
+    {
+        $products = Product::select('product_name')->get();
+
+        $data = [];
+
+        foreach ($products as $item) {
+            $data[] = $item['product_name'];
+        }
+        return $data;
+    }
+
+    public function searchedProduct(Request $request)
+    {
+        $searched_product = $request->product_name;
+        if ($searched_product != '') {
+            $product = Product::where("product_name", "LIKE", "%$searched_product%")->first();
+            if ($product) {
+                return redirect('/product/details/'.$product->id);
+            } else {
+                return redirect()->back()->with('status', "No Product Match your Searched!");
+            }
+        } else {
+            return redirect()->back();
+        }
+    }
+
 }

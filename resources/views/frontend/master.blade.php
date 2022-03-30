@@ -38,6 +38,8 @@
 
     <!-- custom - css include -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend_assets/css/style.css') }}">
+    {{-- jquery autocomplete --}}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -46,11 +48,11 @@
     <div class="body_wrap">
         
         <!-- backtotop - start -->
-        <div class="backtotop">
+        {{-- <div class="backtotop">
             <a href="#" class="scroll">
                 <i class="far fa-arrow-up"></i>
             </a>
-        </div>
+        </div> --}}
         <!-- backtotop - end -->
 
         <!-- preloader - start -->
@@ -100,7 +102,8 @@
                         </div>
 
                         <div class="col col-lg-6 col-md-6 col-sm-12">
-                            <form action="#">
+                            <form action="{{ url('/searched/product') }}" method="POST">
+                                @csrf
                                 <div class="advance_serach">
                                     <div class="select_option mb-0 clearfix">
                                         <select class="slt">
@@ -110,10 +113,10 @@
                                                 @endforeach
                                         </select>
                                     </div>
-                                    <div class="form_item">
-                                        <input type="search" name="search" placeholder="Search Prudcts...">
+                                    <div class="form_item">                                           
+                                        <input type="search" id="search-product" name="product_name" placeholder="Search Prudcts...">
                                         <button type="submit" class="search_btn"><i class="far fa-search"></i></button>
-                                    </div>
+                                    </div>                                 
                                 </div>
                             </form>
                         </div>
@@ -336,9 +339,9 @@
                                             <span class="hotline_number">+ 123 456 7890</span>
                                         </div>
                                     </div>
-                                    <div class="livechat_btn clearfix">
+                                    {{-- <div class="livechat_btn clearfix">
                                         <a class="btn border_primary" href="#!">Live Chat</a>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <ul class="store_btns_group ul_li">
                                     <li><a href="#!"><img src="{{asset('frontend_assets/images/app_store.png')}}" alt="app_store"></a></li>
@@ -390,6 +393,41 @@
     <!-- custom - main-js -->
     <script src="{{asset('frontend_assets/js/main.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    @yield('footer_script')>
+    {{-- auto complete cdn link --}}
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        
+        var availableTags = [];
+        $.ajax({
+            method: "GET",
+            url: "/product-list",
+            success: function (response) {
+                // console.log(response);
+                startAutoComplete(response);
+            }
+        });
+
+        function startAutoComplete(availableTags) 
+        {            
+            $( "#search-product" ).autocomplete({
+                source: availableTags
+            });
+        }
+      
+    </script>
+    <!--Start of Tawk.to Script-->
+    <script>
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6243c3970bfe3f4a877061f7/1fvcb82f4';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    @yield('footer_script')
 </body>
 </html>

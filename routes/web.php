@@ -46,6 +46,9 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/product/details/{product_id}', [FrontendController::class, 'product_details'])->name('product.details');
 Route::get('/customer/account/', [FrontendController::class, 'customer_account']);
 Route::post('/account/update', [FrontendController::class, 'customer_account_update']);
+// product search
+Route::get('/product-list', [FrontendController::class, 'productListAjax']);
+Route::post('/searched/product', [FrontendController::class, 'searchedProduct']);
 
 // about 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
