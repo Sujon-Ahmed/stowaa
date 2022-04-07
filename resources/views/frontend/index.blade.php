@@ -128,7 +128,7 @@
                     <div class="best-selling-products">
                         <div class="sec-title-link">
                             <h3>All Products</h3>
-                            <div class="view-all"><a href="#">View all<i class="fal fa-long-arrow-right"></i></a></div>
+                            <div class="view-all"><a href="{{ route('shop.grid') }}">View all<i class="fal fa-long-arrow-right"></i></a></div>
                         </div>
                         <div class="product-area clearfix row">
                             @foreach ($all_products as $product)

@@ -45,4 +45,6 @@ class HomeController extends Controller
         $total_users = User::where('id', '!=', $logged_user_id)->orderBy('id','desc')->simplePaginate(5);
         return view('admin.users.index', compact('logged_user_name', 'total_users_number', 'total_users'));
     }
+
+    // 
 }

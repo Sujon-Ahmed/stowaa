@@ -194,6 +194,8 @@ class SslCommerzPaymentController extends Controller
                     ->update(['status' => 'Processing']);
 
                 echo "<br >Transaction is successfully Completed";
+               
+                return redirect()->route('ordered_confirm')->with('ordered_confirm', 'Your Order has been placed!');                
                 
             } else {
                 /*
@@ -210,43 +212,7 @@ class SslCommerzPaymentController extends Controller
              That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
              */ 
             echo "Transaction is successfully Completed";
-            if ($tran_id) {
-                $order_id = Order::insertGetId([
-                    'user_id'=>Auth::guard('customer')->id(),
-                    'sub_total'=>$request->sub_total,
-                    'discount'=>$request->discount,
-                    'delivery_charge'=>$request->delivery_charge,
-                    'payment_method'=>$request->payment_method,
-                    'created_at'=>Carbon::now(),
-                ]);
-        
-                BillingDetail::insert([
-                    'order_id'=>$order_id,
-                    'user_id'=>Auth::guard('customer')->id(),
-                    'name'=>$request->name,
-                    'email'=>$request->email,
-                    'company'=>$request->company,
-                    'phone'=>$request->phone,
-                    'country_id'=>$request->country_id,
-                    'city_id'=>$request->city_id,
-                    'address'=>$request->address,
-                    'notes'=>$request->notes,
-                    'created_at'=>Carbon::now(),
-                ]);
-        
-                $carts = Cart::where('user_id', Auth::guard('customer')->id())->get();
-                foreach ($carts as $cart) {
-                    OrderedProduct::insert([
-                        'order_id'=>$order_id,
-                        'product_id'=>$cart->product_id,
-                        'quantity'=>$cart->quantity,
-                        'price'=>$cart->rel_to_product->after_discount,
-                        'created_at'=>Carbon::now(),
-                    ]);
-                }
-
-                return redirect()->route('ordered_confirm')->with('ordered_confirm', 'Your Order has been placed!');
-            }
+            
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";

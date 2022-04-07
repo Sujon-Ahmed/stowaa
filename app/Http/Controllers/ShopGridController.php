@@ -10,11 +10,26 @@ class ShopGridController extends Controller
 {
     public function index()
     {
+        $total_products = Product::all()->count();
         $categories = Category::all();
         $products = Product::paginate(9);
         return view('frontend.shop_grid', [
-            'products'=>$products,
-            'categories'=>$categories,
+            'products' => $products,
+            'categories' => $categories,
+            'total_products' => $total_products,
         ]);
     }
+
+    public function filter_category_product($id)
+    {
+        $total_products = Product::all()->count();
+        $categories = Category::all();
+        $products = Product::where('category_id', $id)->paginate(9);
+        return view('frontend.shop_grid', [
+            'products' => $products,
+            'categories' => $categories,
+            'total_products' => $total_products,
+        ]);
+    }
+
 }

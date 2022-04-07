@@ -48,11 +48,11 @@
     <div class="body_wrap">
         
         <!-- backtotop - start -->
-        {{-- <div class="backtotop">
+        <div class="backtotop">
             <a href="#" class="scroll">
                 <i class="far fa-arrow-up"></i>
             </a>
-        </div> --}}
+        </div>
         <!-- backtotop - end -->
 
         <!-- preloader - start -->
@@ -159,7 +159,7 @@
                                     <div class="card card-body">
                                         <ul class="allcategories_list ul_li_block">
                                             @foreach (App\Models\Category::all() as $category)
-                                                <li><a href="shop_grid.html"><i class="fas fa-chevron-right"></i> {{$category->category_name}}</a></li>
+                                                <li><a href="{{ url('/filter/category/product',$category->id) }}"><i class="fas fa-chevron-right"></i> {{$category->category_name}}</a></li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -339,9 +339,9 @@
                                             <span class="hotline_number">+ 123 456 7890</span>
                                         </div>
                                     </div>
-                                    {{-- <div class="livechat_btn clearfix">
+                                    <div class="livechat_btn clearfix">
                                         <a class="btn border_primary" href="#!">Live Chat</a>
-                                    </div> --}}
+                                    </div>
                                 </div>
                                 <ul class="store_btns_group ul_li">
                                     <li><a href="#!"><img src="{{asset('frontend_assets/images/app_store.png')}}" alt="app_store"></a></li>
@@ -416,7 +416,7 @@
       
     </script>
     <!--Start of Tawk.to Script-->
-    <script>
+    {{-- <script>
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -426,7 +426,7 @@
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
         })();
-    </script>
+    </script> --}}
     <!--End of Tawk.to Script-->
     @yield('footer_script')
 </body>

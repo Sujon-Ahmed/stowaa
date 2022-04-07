@@ -46,6 +46,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/product/details/{product_id}', [FrontendController::class, 'product_details'])->name('product.details');
 Route::get('/customer/account/', [FrontendController::class, 'customer_account']);
 Route::post('/account/update', [FrontendController::class, 'customer_account_update']);
+
 // product search
 Route::get('/product-list', [FrontendController::class, 'productListAjax']);
 Route::post('/searched/product', [FrontendController::class, 'searchedProduct']);
@@ -72,6 +73,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/users', [HomeController::class, 'users'])->name('users');
 Route::get('/user/delete/{id}', [HomeController::class, 'user_delete'])->name('user.delete');
+
+// orders details
+Route::get('/orders', [HomeController::class, 'orderDetails'])->name('orders');
 
 // Category
 // Route::view('/category','category.category');
@@ -105,7 +109,8 @@ Route::post('/getCategory', [ProductController::class, 'getCategory']);
 Route::post('/product/update', [ProductController::class, 'product_update']);
 
 // shop grid
-Route::get('/shop/grid', [ShopGridController::class, 'index']);
+Route::get('/shop/grid', [ShopGridController::class, 'index'])->name('shop.grid');
+Route::get('/filter/category/product/{id}', [ShopGridController::class, 'filter_category_product'])->name('filter.category.product');
 
 // cart
 Route::post('/cart/insert', [CartController::class, 'cart_insert']);
@@ -126,6 +131,7 @@ Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout
 Route::post('/order/placed', [CheckoutController::class, 'order_insert']);
 Route::post('/getCity', [CheckoutController::class, 'getCity']);
 Route::get('/order/confirm', [CheckoutController::class, 'order_confirm'])->name('ordered_confirm');
+
 
 // SSLCOMMERZ Start
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);

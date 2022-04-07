@@ -82,10 +82,12 @@ class CheckoutController extends Controller
             $sub_total = $request->sub_total;
             $discount = $request->discount;
             $delivery_charge = $request->delivery_charge;
+            $user_id = Auth::guard('customer')->id();
             return view('exampleHosted', [
                 'sub_total'=>$sub_total,
                 'discount'=>$discount,
                 'delivery_charge'=>$delivery_charge,
+                'user_id'=>$user_id,
             ]);
         } else {
             return view('exampleHosted');

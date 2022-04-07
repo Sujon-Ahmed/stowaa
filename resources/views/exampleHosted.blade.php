@@ -60,6 +60,7 @@
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (BDT)</span>
                     <input type="hidden" name="total" value="{{ $sub_total - ($sub_total * $discount) / 100 + ($delivery_charge)}}">
+                    <input type="hidden" name="user_id" value="{{ $user_id }}">
                     <strong>{{ $sub_total - ($sub_total * $discount) / 100 + ($delivery_charge)}} TK</strong>
                 </li>
             </ul>

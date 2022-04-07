@@ -25,7 +25,7 @@
                         <ul class="sb_category_list ul_li_block">
                             @foreach ($categories as $category)                                           
                                 <li>
-                                    <a href="#!">{{$category->category_name}} <span>({{$category->rel_to_product->count()}})</span></a>
+                                    <a href="{{ url('/filter/category/product',$category->id) }}">{{$category->category_name}} <span>({{$category->rel_to_product->count()}})</span></a>
                                 </li>
                             @endforeach                                        
                         </ul>
@@ -96,19 +96,19 @@
 
                         <div class="col col-md-4">
                             <form action="#">
-                                <div class="select_option clearfix">
+                                <div class="slt clearfix">
                                     <select>
                                         <option data-display="Defaul Sorting">Select Your Option</option>
-                                        <option value="1">Sorting By Name</option>
-                                        <option value="2">Sorting By Price</option>
-                                        <option value="3">Sorting By Size</option>
+                                        <option value="sortName">Sorting By Name</option>
+                                        <option value="sortPrice">Sorting By Price</option>
+                                        <option value="sortSize">Sorting By Size</option>
                                     </select>
                                 </div>
                             </form>
                         </div>
 
                         <div class="col col-md-4">
-                            <div class="result_text">Showing 1-12 of 30 relults</div>
+                            <div class="result_text">Showing 1 - 9 of {{ $total_products }} results</div>
                         </div>
                     </div>
                 </div>
@@ -224,7 +224,6 @@
                                     </div>
                                 </div>
                                 
-
                                  <!-- product quick view modal - start
                                 ================================================== -->
                                 <div class="modal fade" id="quickview_popup{{$item->id}}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">

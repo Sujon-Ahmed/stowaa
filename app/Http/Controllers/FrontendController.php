@@ -27,10 +27,11 @@ class FrontendController extends Controller
         // echo $product_info->category_id;
         $related_products = Product::where('category_id', $product_info->category_id)->where('id', '!=',  $product_id)->get();
         // echo $related_products;
-        return view('frontend.product_details', [
-            'product_info'=>$product_info,
-            'related_products'=>$related_products,
-        ]);
+    
+            return view('frontend.product_details', [
+                'product_info'=>$product_info,
+                'related_products'=>$related_products,
+            ]);
         return back();
     }
 
