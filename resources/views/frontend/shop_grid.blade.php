@@ -96,14 +96,17 @@
 
                         <div class="col col-md-4">
                             <form action="#">
+                                                       
                                 <div class="slt clearfix">
-                                    <select>
+                                    <select name="sortProducts" id="sortProducts">
                                         <option data-display="Defaul Sorting">Select Your Option</option>
                                         <option value="sortName">Sorting By Name</option>
-                                        <option value="sortPrice">Sorting By Price</option>
-                                        <option value="sortSize">Sorting By Size</option>
-                                    </select>
+                                        <option value="sortPriceASC">Price - Low to High</option>
+                                        <option value="sortPriceDESC">Price - High to Low</option>
+                                        <option value="sortNewest">Sorting By Newest</option>
+                                    </select>                                                                 
                                 </div>
+                                
                             </form>
                         </div>
 

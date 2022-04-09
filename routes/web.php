@@ -13,6 +13,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\subcategoryController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ShopGridController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SslCommerzPaymentController;
@@ -46,6 +47,9 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/product/details/{product_id}', [FrontendController::class, 'product_details'])->name('product.details');
 Route::get('/customer/account/', [FrontendController::class, 'customer_account']);
 Route::post('/account/update', [FrontendController::class, 'customer_account_update']);
+
+// invoice download
+Route::get('/invoice/download/{id}', [InvoiceController::class, 'invoiceDownload'])->name('invoice.download');
 
 // product search
 Route::get('/product-list', [FrontendController::class, 'productListAjax']);
@@ -111,6 +115,7 @@ Route::post('/product/update', [ProductController::class, 'product_update']);
 // shop grid
 Route::get('/shop/grid', [ShopGridController::class, 'index'])->name('shop.grid');
 Route::get('/filter/category/product/{id}', [ShopGridController::class, 'filter_category_product'])->name('filter.category.product');
+Route::post('/sort/product', [ShopGridController::class, 'sort_products']);
 
 // cart
 Route::post('/cart/insert', [CartController::class, 'cart_insert']);

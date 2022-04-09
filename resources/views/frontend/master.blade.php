@@ -96,7 +96,7 @@
                         <div class="col col-lg-3 col-md-3 col-sm-12">
                             <div class="brand_logo">
                                 <a class="brand_link" href="{{route('index')}}">
-                                    <img src="{{asset('frontend_assets/images/logo/logo_1x.png')}}" srcset="{{asset('frontend_assets//images/logo/logo_2x.png 2x')}}" alt="logo_not_found">
+                                    <img src="{{asset('frontend_assets/images/logo/logo_1x.png')}}" srcset="{{asset('frontend_assets/images/logo/logo_2x.png 2x')}}" alt="logo_not_found">
                                 </a>
                             </div>
                         </div>

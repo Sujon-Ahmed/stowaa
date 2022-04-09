@@ -72,7 +72,7 @@
                                 <td>{{ $order->delivery_charge }}</td>
                                 <td>{{ $order->sub_total }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary">Download Invoice</a>
+                                    <a href="{{ route('invoice.download', $order->id) }}" class="btn btn-primary">Download Invoice</a>
                                 </td>
                             </tr>
                             @endforeach

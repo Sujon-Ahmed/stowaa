@@ -21,6 +21,7 @@ class ProductController extends Controller
             'all_categories'=>$all_categories,
             'all_subcategories'=>$all_subcategories,
         ]);
+        
     }
 
     public function view_products()
@@ -30,6 +31,7 @@ class ProductController extends Controller
         [
             'all_products'=>$all_products,
         ]);
+        // return response()->json(['all_products' => $all_products], 200);
     }
 
     public function edit_products($id)

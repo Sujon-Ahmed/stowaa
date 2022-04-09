@@ -74,21 +74,25 @@
                         
                         <div class="form_item">
                             <input type="text" name="name" id="name" class="form-control" placeholder="Enter Name">
+                            <span style="color: red; font-style:italic; font-weight:500;">@error('name'){{ $message }}@enderror</span>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form_item">
                                     <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email">
+                                    <span style="color: red; font-style:italic; font-weight:500;">@error('email'){{ $message }}@enderror</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form_item">
                                     <input type="text" name="subject" id="subject" class="form-control" placeholder="Enter Subject">
+                                    <span style="color: red; font-style:italic; font-weight:500;">@error('subject'){{ $message }}@enderror</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form_item">
                             <textarea name="message" id="message"  placeholder="Write Your Message..."></textarea>
+                            <span style="color: red; font-style:italic; font-weight:500;">@error('message'){{ $message }}@enderror</span>
                         </div>
                         <button type="submit" class="btn btn-dark">Submit</button>
                         

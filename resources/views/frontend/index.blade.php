@@ -263,7 +263,7 @@
                             @foreach ($all_categories as $category)
                             <div class="slider_item">
                                 <div class="category_boxed">
-                                    <a href="#!">
+                                    <a href="{{ url('/filter/category/product',$category->id) }}">
                                             <span class="item_image">
                                                 <img src="{{asset('/uploads/categories')}}/{{$category->category_image}}" alt="image_not_found">
                                             </span>
