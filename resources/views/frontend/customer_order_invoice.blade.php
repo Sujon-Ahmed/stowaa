@@ -4,19 +4,16 @@
     <title>INVOICE</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Montserrat&display=swap" rel="stylesheet">
 	<style media="all">
-    * {
+        * {
 			margin: 0;
 			padding:0;
+			box-sizing: border-box
 		}
 		body{
 			font-size: 0.875rem;
-      font-family: 'Lato', sans-serif;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: normal;
+            font-family: sans-serif;
+            font-weight: normal;
 			padding:0;
 			margin:0; 
 		}
@@ -56,10 +53,10 @@
 		<div style="background: #eceff4;padding: 1rem;">
 			<table>
 				<tr>
-					<td>
-            <img src="{{ asset('frontend_assets/images/logo/logo_1x.png') }}" alt="">
+					<td>						
+						<h3>Stowaa</h3>
 					</td>
-					<td style="font-size: 1.5rem;" class="text-right strong">INVOICE</td>
+					<td style="font-size: 1.5rem; right:0;" class="text-right strong">INVOICE</td>
 				</tr>
 			</table>
 			<table>
@@ -68,56 +65,109 @@
 					<td class="text-right"></td>
 				</tr>
 				<tr>
-					{{-- <td class="gry-color small">{{ get_setting('contact_address') }}</td> --}}
+					<td class="gry-color small">Dhaka, Bangladesh</td>
 					<td class="text-right"></td>
 				</tr>
 				<tr>
-					<td class="gry-color small">Email: info@stowaa.com</td>
+					<td class="gry-color small">Email : info@stowaa.com</td>
 					<td class="text-right small"><span class="gry-color small">Order ID:</span> <span class="strong">{{ $order->id }}</span></td>
 				</tr>
 				<tr>
-					<td class="gry-color small">Phone: ++8801743405982</td>
-					<td class="text-right small"><span class="gry-color small">Order Date:</span> <span class=" strong">{{  date('M-d-Y h:i A', strtotime($order->created_at)) }}</span></td>
+					<td class="gry-color small">Phone : ++88017 4340 5982</td>
+					<td class="text-right small"><span class="gry-color small">Order Date :</span> <span class="strong">{{ date('M-d-Y h:i A', strtotime($order->created_at)) }}</span></td>
 				</tr>
 			</table>
 
 		</div>
 
 		<div style="padding: 1rem;padding-bottom: 0">
-      <table>
-        @foreach ($billingDetails as $item)
+            <table>
+				@foreach ($billingDetails as $item)					
 				<tr><td class="strong small gry-color">Bill to:</td></tr>
 				<tr><td class="strong">{{ $item->name }}</td></tr>
 				<tr><td class="gry-color small">{{ $item->address }}, {{ $item->rel_to_city->name }}, {{ $item->rel_to_country->name }}</td></tr>
 				<tr><td class="gry-color small">Email: {{ $item->email }}</td></tr>
 				<tr><td class="gry-color small">Phone: {{ $item->phone }}</td></tr>
-        @endforeach
+				@endforeach
 			</table>
-		</div>
+		</div> 
 
-	  <div style="padding: 1rem; display:flex" >
+	    <div style="padding: 1rem;">
 			<table class="padding text-left small border-bottom">
 				<thead>
-					<tr class="gry-color" style="background: #eceff4;">
-						<th width="10%" class="text-left">Product Name</th>
-						<th width="5%" class="text-left">Price</th>
-						<th width="5%" class="text-left">Qty</th>
-					</tr>
+	                <tr class="gry-color" style="background: #eceff4;">
+	                    <th width="35%" class="text-left">Product Name</th>
+						<th width="15%" class="text-left">Delivery Type</th>
+	                    <th width="10%" class="text-left">Qty</th>
+	                    <th width="15%" class="text-left">Unit Price</th>
+	                    <th width="10%" class="text-left">Tax</th>
+	                    <th width="15%" class="text-right">Total</th>
+	                </tr>
 				</thead>
 				<tbody class="strong">
-					@foreach ($orderProducts as $item)
-						<tr>
-							<td> 
-								{{ $item->rel_to_product->product_name }}
-							</td>
-							<td>৳ {{ $item->rel_to_product->product_price }}</td>
-							<td>{{ $item->quantity }}</td>
-
-						</tr>
+	                @foreach ($orderProducts as $product)
+		               <tr>
+						   <td>{{ $product->rel_to_product->product_name }}</td>
+						   <td>
+							   @if ($order->payment_method == 1)
+								   <p>Home Delivery</p>
+								   @else 
+								   <p>Others Method</p>
+							   @endif
+						   </td>
+						   <td>{{ $product->quantity }}</td>
+						   <td>{{ $product->price }}</td>
+						   <td>0</td>
+						   <td>{{ $product->price * $product->quantity }}</td>
+					   </tr>
 					@endforeach
-				</tbody>
+	            </tbody>
 			</table>
 		</div>
+
+	    <div style="padding:0 1.5rem;">
+	        <table class="text-right sm-padding small strong">
+	        	<thead>
+	        		<tr>
+	        			<th width="60%"></th>
+	        			<th width="40%"></th>
+	        		</tr>
+	        	</thead>
+		        <tbody>
+			        <tr>
+						<td class="text-left">
+                            {{ QrCode::size(200)->generate($order->id) }}
+			            </td>					
+			            <td>
+					        <table class="text-right sm-padding small strong">
+						        <tbody>
+							        <tr>
+							            <th class="gry-color text-left">Sub Total</th>							           
+										<td>{{ $order->sub_total }}</td>
+							        </tr>
+							        <tr>
+							            <th class="gry-color text-left">Shipping Cost</th>
+							            <td class="currency">{{ $order->delivery_charge }}</td>
+							        </tr>
+							        <tr class="border-bottom">
+							            <th class="gry-color text-left">Total Tax</th>
+							            <td class="currency">0</td>
+							        </tr>
+				                    <tr class="border-bottom">
+							            <th class="gry-color text-left">Coupon Discount</th>
+							            <td class="currency">{{ $order->discount }}</td>
+							        </tr>
+							        <tr>
+							            <th class="text-left strong">Grand Total</th>
+							            <td class="currency">{{ $order->sub_total + $order->delivery_charge +  $order->discount }}</td>
+							        </tr>
+						        </tbody>
+						    </table>
+			            </td>
+			        </tr>
+		        </tbody>
+		    </table>
+	    </div> 
 
 	</div>
 </body>
