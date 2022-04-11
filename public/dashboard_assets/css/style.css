@@ -21507,7 +21507,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .photo-content {
   position: relative; }
   .photo-content .cover-photo {
-    background: url(../images/profile/cover.jpg);
+    background: url(../images/banner.webp);
     background-size: cover;
     background-position: center;
     min-height: 250px;

@@ -17,9 +17,10 @@
                         {{ session('delete') }}
                     </div>
                 @endif
-                <table class="table table-bordered">
+                <table id="example3" class="display min-w850">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>SL</th>
                             <th>Name</th>
                             <th>Email</th>
@@ -30,6 +31,7 @@
                     <tbody>
                         @foreach ($total_users as $key=>$user) 
                             <tr>
+                                <td><img class="rounded-circle" width="35" src="{{ asset('/dashboard_assets/images/user-avatar.png') }}" alt=""></td>
                                 <td>{{$total_users->firstitem()+$key}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>

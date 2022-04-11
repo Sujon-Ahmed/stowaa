@@ -13,6 +13,10 @@ class Order extends Model
     {
         return $this->belongsTo(BillingDetail::class, 'user_id');
     }
+    public function rel_to_orderProducts()
+    {
+        return $this->hasMany(OrderedProduct::class, 'order_id');
+    }
    
    
     

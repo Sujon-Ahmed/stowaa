@@ -78,8 +78,12 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/users', [HomeController::class, 'users'])->name('users');
 Route::get('/user/delete/{id}', [HomeController::class, 'user_delete'])->name('user.delete');
 
+// profile
+Route::get('/admin/profile', [HomeController::class, 'admin_profile'])->name('admin.profile');
+
 // orders details
 Route::get('/orders', [HomeController::class, 'orderDetails'])->name('orders');
+Route::get('/order/delete/{id}', [HomeController::class, 'orderDelete'])->name('order.delete');
 
 // Category
 // Route::view('/category','category.category');

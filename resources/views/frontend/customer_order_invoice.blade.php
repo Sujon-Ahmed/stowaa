@@ -96,8 +96,8 @@
 			<table class="padding text-left small border-bottom">
 				<thead>
 	                <tr class="gry-color" style="background: #eceff4;">
-	                    <th width="35%" class="text-left">Product Name</th>
-						<th width="15%" class="text-left">Delivery Type</th>
+	                    <th width="30%" class="text-left">Product Name</th>
+						<th width="20%" class="text-left">Delivery Type</th>
 	                    <th width="10%" class="text-left">Qty</th>
 	                    <th width="15%" class="text-left">Unit Price</th>
 	                    <th width="10%" class="text-left">Tax</th>
@@ -118,7 +118,7 @@
 						   <td>{{ $product->quantity }}</td>
 						   <td>{{ $product->price }}</td>
 						   <td>0</td>
-						   <td>{{ $product->price * $product->quantity }}</td>
+						   <td class="text-right">{{ $product->price * $product->quantity }}</td>
 					   </tr>
 					@endforeach
 	            </tbody>

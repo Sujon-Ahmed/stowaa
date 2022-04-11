@@ -75,7 +75,7 @@
                                     <i class="fal fa-plus"></i>
                                 </button>
                             </div>
-                            <div class="total_price">Total: ৳ <span class="total_amount">{{$product_info->after_discount}}</span></div>
+                            <div class="total_price">৳ <span class="total_amount">{{$product_info->after_discount}}</span></div>
                         </div>
 
                         <ul class="default_btns_group ul_li">

@@ -14,7 +14,7 @@
                 <h5>Product Lists</h5>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-responsive">
+                <table id="example3" class="display min-w850">
                     <thead>
                         <tr>
                             <th>SL</th>
@@ -48,6 +48,7 @@
                                 <img width="50" src="{{asset('/uploads/products/preview')}}/{{$product->product_preview}}" alt="">
                             </td>
                             <td>
+                                <a href="{{route('product.details',$product->id)}}" target="_blank" class="btn btn-outline-info btn-sm"><i class="fa fa-eye"></i></a>
                                 <a href="{{route('product.edit',$product->id)}}" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i></a>
                                 <a onclick="javascript:return confirm('Are you sure delete this product?')" href="{{route('product.delete',$product->id)}}" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
                             </td>

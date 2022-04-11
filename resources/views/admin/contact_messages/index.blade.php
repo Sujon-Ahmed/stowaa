@@ -11,12 +11,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card shadow-sm">
-                    <div class="card-header d-flex justify-content-between">
+                    <div class="card-header">
                         <h5>Contact Message List</h5>
-                        <small class="float-end">Total Messages :</small>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table id="example3" class="display min-w850">
                             <thead>
                                 <tr>
                                     <th>SL</th>

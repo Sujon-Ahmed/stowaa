@@ -12,7 +12,7 @@ class ShopGridController extends Controller
     {
         $total_products = Product::all()->count();
         $categories = Category::all();
-        $products = Product::paginate(9);
+        $products = Product::orderBy('id', 'desc')->paginate(9);
         return view('frontend.shop_grid', [
             'products' => $products,
             'categories' => $categories,
@@ -24,7 +24,7 @@ class ShopGridController extends Controller
     {
         $total_products = Product::all()->count();
         $categories = Category::all();
-        $products = Product::where('category_id', $id)->paginate(9);
+        $products = Product::orderBy('id', 'desc')->where('category_id', $id)->paginate(9);
         return view('frontend.shop_grid', [
             'products' => $products,
             'categories' => $categories,

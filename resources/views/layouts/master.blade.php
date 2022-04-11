@@ -5,9 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Gymove - Admin Dashboard</title>
+    <title>Stowaa - Dashboard</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashboard_assets/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('dashboard_assets/images/favourite_icon_1.png')}}">
+	<!-- Datatable -->
+	<link href="{{asset('dashboard_assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="{{asset('dashboard_assets/vendor/chartist/css/chartist.min.css')}}">
     <link href="{{asset('dashboard_assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
 	<link href="{{asset('dashboard_assets/vendor/owl-carousel/owl.carousel.cs')}}s" rel="stylesheet">
@@ -40,9 +42,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="{{route('home')}}" class="brand-logo">
-                <img class="logo-abbr" src="{{asset('dashboard_assets/images/logo.png')}}" alt="">
-                <img class="logo-compact" src="{{asset('dashboard_assets/images/logo-text.png')}}" alt="">
-                <img class="brand-title" src="{{asset('dashboard_assets/images/logo-text.png')}}" alt="">
+                <img class="logo-abbr" src="{{asset('dashboard_assets/images/favourite_icon_1.png')}}" alt="">
+                <img class="logo-compact" src="{{asset('dashboard_assets/images/logo_1x.png')}}" alt="">
+                <img class="brand-title" src="{{asset('dashboard_assets/images/logo_1x.png')}}" alt="">
             </a>
 
             <div class="nav-control">
@@ -733,7 +735,7 @@
 							</li>
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-                                    <img src="{{asset('dashboard_assets/images/profile/17.jpg')}}" width="20" alt=""/>
+                                    <img src="{{asset('dashboard_assets/images/user-avatar.png')}}" width="20" alt=""/>
 									<div class="header-info">
 										<span class="text-black"><strong>{{Auth::user()->name}}</strong></span>
 										<p class="fs-12 mb-0">Super Admin</p>
@@ -783,9 +785,18 @@
                             <li><a href="{{route('users')}}">Users List</a></li>
                         </ul>
                     </li>
+                    {{-- Profile nav --}}
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+						<i class="flaticon-381-television"></i>
+							<span class="nav-text">Profile</span>
+						</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('admin.profile')}}">Profile</a></li>
+                        </ul>
+                    </li>
                     {{-- category nav --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-layer-1"></i>
+                        <i class="flaticon-381-controls-3"></i>
                         <span class="nav-text">Category</span>
                         </a>
                         <ul aria-expanded="false">
@@ -796,7 +807,7 @@
                     </li>
                     {{-- subcategory nav --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-layer-1"></i>
+						<i class="flaticon-381-controls-3"></i>
                         <span class="nav-text">Sub Category</span>
                         </a>
                         <ul aria-expanded="false">
@@ -806,7 +817,7 @@
                     </li>
                     {{-- products nav --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-layer-1"></i>
+                        <i class="flaticon-381-controls-3"></i>
                         <span class="nav-text">Products</span>
                         </a>
                         <ul aria-expanded="false">
@@ -816,7 +827,7 @@
                     </li>
                     {{-- coupon nav --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-layer-1"></i>
+                        <i class="flaticon-381-controls-3"></i>
                         <span class="nav-text">Coupon</span>
                         </a>
                         <ul aria-expanded="false">
@@ -825,7 +836,7 @@
                     </li>
                     {{-- order nav --}}
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-layer-1"></i>
+                        <i class="flaticon-381-controls-3"></i>
                         <span class="nav-text">Orders</span>
                         </a>
                         <ul aria-expanded="false">
@@ -834,7 +845,7 @@
                     </li>
 					{{-- contact --}}
 					<li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-381-layer-1"></i>
+                        <i class="flaticon-381-controls-3"></i>
                         <span class="nav-text">Contact</span>
                         </a>
                         <ul aria-expanded="false">
@@ -906,6 +917,10 @@
 	
 	<!-- Dashboard 1 -->
 	<script src="{{asset('dashboard_assets/js/dashboard/dashboard-1.js')}}"></script>
+	  <!-- Datatable -->
+	  <script src="{{asset('dashboard_assets/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+	  <script src="{{asset('dashboard_assets/js/plugins-init/datatables.init.js') }}"></script>
+
     @yield('footer_script')
 	<script>
 		function carouselReview(){
