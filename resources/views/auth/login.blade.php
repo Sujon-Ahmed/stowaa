@@ -23,14 +23,14 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
 									<div class="text-center mb-3">
-										<a href=""><img src="{{asset('dashboard_assets/images/logo-full.png')}}" alt=""></a>
+										<a href=""><img src="{{asset('dashboard_assets/images/logo_1x.png')}}" alt=""></a>
 									</div>
                                     <h4 class="text-center mb-4 text-white">Sign in your account</h4>
                                     <form action="{{ route('login') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Email</strong></label>
-                                            <input type="email" name="email" class="form-control  @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                            <input type="email" name="email" placeholder="Email" class="form-control  @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -39,7 +39,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="mb-1 text-white"><strong>Password</strong></label>
-                                            <input type="password"  class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                            <input type="password" placeholder="Password"  class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
