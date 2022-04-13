@@ -111,53 +111,19 @@
         </div>
 
         <div class="row justify-content-center">
+            @foreach ($team_members as $member)
             <div class="col col-lg-3 col-md-4 col-sm-6">
                 <div class="team_item">
                     <div class="team_image">
-                        <img src="{{ asset('/frontend_assets/images/team/team_1.jpg') }}" alt="image_not_found">
+                        <img src="{{ asset('/dashboard_assets/images/team') }}/{{ $member->photo }}" alt="image_not_found">
                     </div>
                     <div class="team_content">
-                        <h3 class="team_member_name">Harry Dor</h3>
-                        <span class="team_member_title">CEO/Founder</span>
+                        <h3 class="team_member_name">{{ $member->name }}</h3>
+                        <span class="team_member_title">{{ $member->designation }}</span>
                     </div>
                 </div>
             </div>
-
-            <div class="col col-lg-3 col-md-4 col-sm-6">
-                <div class="team_item">
-                    <div class="team_image">
-                        <img src="{{ asset('/frontend_assets/images/team/team_2.jpg') }}" alt="image_not_found">
-                    </div>
-                    <div class="team_content">
-                        <h3 class="team_member_name">John Swim</h3>
-                        <span class="team_member_title">Fashion Designer</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col col-lg-3 col-md-4 col-sm-6">
-                <div class="team_item">
-                    <div class="team_image">
-                        <img src="{{ asset('/frontend_assets/images/team/team_3.jpg') }}" alt="image_not_found">
-                    </div>
-                    <div class="team_content">
-                        <h3 class="team_member_name">Harry Dor</h3>
-                        <span class="team_member_title">CEO/Founder</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col col-lg-3 col-md-4 col-sm-6">
-                <div class="team_item">
-                    <div class="team_image">
-                        <img src="{{ asset('/frontend_assets/images/team/team_4.jpg') }}" alt="image_not_found">
-                    </div>
-                    <div class="team_content">
-                        <h3 class="team_member_name">John Swim</h3>
-                        <span class="team_member_title">Fashion Designer</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
     </div>

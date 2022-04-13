@@ -852,7 +852,24 @@
                             <li><a href="{{route('contact.messages')}}">Messages</a></li>
                         </ul>
                     </li>
+					{{-- team --}}
+					<li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-381-controls-3"></i>
+                        <span class="nav-text">Team</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('team')}}">Team</a></li>
+                        </ul>
+                    </li>
                 </ul>
+				<div class="add-menu-sidebar">
+					<img src="images/calendar.png" alt="" class="mr-3">
+					<p class="	font-w500 mb-0">Create Workout Plan Now</p>
+				</div>
+				<div class="copyright">
+					<p><strong>Gymove Fitness Admin Dashboard</strong> © 2020 All Rights Reserved</p>
+					<p>Made with <span class="heart"></span> by DexignZone</p>
+				</div>
 			</div>
         </div>
         <!--**********************************
@@ -902,6 +919,8 @@
        0 Scripts
     ***********************************-->
     <!-- Required vendors -->
+	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" referrerpolicy="no-referrer"></script> --}}
+	<script src="{{ asset('dashboard_assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{asset('dashboard_assets/vendor/global/global.min.js')}}"></script>
 	<script src="{{asset('dashboard_assets/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
 	<script src="{{asset('dashboard_assets/vendor/chart.js/Chart.bundle.min.js')}}"></script>

@@ -18,6 +18,7 @@ use App\Http\Controllers\ShopGridController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -157,3 +158,7 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 
 // subscribers
 Route::post('/subscribe/submit', [SubscriberController::class, 'index'])->name('subscriber.insert');
+
+// team
+Route::get('/team', [TeamController::class, 'index'])->name('team');
+Route::post('/team/member/store', [TeamController::class, 'store']);
