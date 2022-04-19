@@ -121,8 +121,9 @@
                                         @endif
                                         <div class="actions">
                                             <ul>
-                                                <li>
-                                                    <a href="#">
+                                                <li class="add_wishlist">
+                                                    <input type="hidden" class="product_id" name="product_id" value="{{$item->id}}">
+                                                    <a href="">
                                                         <svg
                                                             role="img"
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -504,4 +505,43 @@
 </section>
 <!-- product_section - end
 ================================================== -->
+@endsection
+@section('footer_script')
+    <script>
+        $('.add_wishlist').click(function() {
+            var product_id = $(this).closest('.grid').find('.product_id').val();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                type:'POST',
+                url:'/add/wishlist',
+                data:{'product_id':product_id},
+            });
+        });
+    </script>
+    @if (session('add_wishlist'))
+    <script>
+        const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+        })
+
+        Toast.fire({
+        icon: 'success',
+        title: '{{session('add_wishlist')}}'
+        })
+    </script>
+@endif
 @endsection
