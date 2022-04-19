@@ -867,7 +867,7 @@
 					<p class="	font-w500 mb-0">Create Workout Plan Now</p>
 				</div>
 				<div class="copyright">
-					<p><strong>Gymove Fitness Admin Dashboard</strong> © 2020 All Rights Reserved</p>
+					<p><strong>Gymove Admin Dashboard</strong> © 2022 All Rights Reserved</p>
 					<p>Made with <span class="heart"></span> by DexignZone</p>
 				</div>
 			</div>

@@ -31,7 +31,7 @@
                         </ul>
                     </div>
 
-                    {{-- <div class="sb_widget">
+                    <div class="sb_widget">
                         <h3 class="sb_widget_title">Your Filter</h3>
                         <div class="filter_sidebar">
                             <div class="fs_widget">
@@ -40,9 +40,9 @@
                                     <div class="select_option clearfix">
                                         <select>
                                             <option data-display="Select Category">Select Your Option</option>
-                                            <option value="1" selected>HP</option>
-                                            <option value="2">HP</option>
-                                            <option value="3">HP</option>
+                                            @foreach ($categories as $category)    
+                                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                            @endforeach    
                                         </select>
                                     </div>
                                 </form>
@@ -52,29 +52,19 @@
                                 <h3 class="fs_widget_title">Manufacturer</h3>
                                 <form action="#">
                                     <ul class="fs_brand_list ul_li_block">
+                                        @foreach ($categories as $category)    
                                         <li>
                                             <div class="checkbox_item">
-                                                <input id="apple_brand" type="checkbox" name="brand_checkbox" />
-                                                <label for="apple_brand">Apple <span>(19)</span></label>
+                                                <input id="category_id{{$category->id}}" type="checkbox" name="category_name" />
+                                                <label for="category_id{{$category->id}}">{{ $category->category_name }} <span>({{$category->rel_to_product->count()}})</span></label>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="checkbox_item">
-                                                <input id="asus_brand" type="checkbox" name="brand_checkbox" />
-                                                <label for="asus_brand">Asus <span>(1)</span></label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="checkbox_item">
-                                                <input id="bank_oluvsen_brand" type="checkbox" name="brand_checkbox" />
-                                                <label for="bank_oluvsen_brand">Bank & Oluvsen <span>(1)</span></label>
-                                            </div>
-                                        </li>
+                                        @endforeach  
                                     </ul>
                                 </form>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </aside>
             </div>
 
