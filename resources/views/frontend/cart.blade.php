@@ -50,7 +50,7 @@
                                     <button type="button" class="input_number_decrement">
                                         <i data-price="{{$cart->rel_to_product->after_discount}}" class="fal fa-minus"></i>
                                     </button>
-                                    <input class="input_number8" name="quantity[{{$cart->id}}]" type="text" value="{{$cart->quantity}}" />
+                                    <input class="input_number8" name="quantity[{{$cart->id}}]" type="number" min="1" value="{{$cart->quantity}}" max="{{ $cart->rel_to_product->quantity }}" />
                                     <button type="button" class="input_number_increment">
                                         <i data-price="{{$cart->rel_to_product->after_discount}}" class="fal fa-plus"></i>
                                     </button>

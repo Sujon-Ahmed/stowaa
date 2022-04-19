@@ -70,7 +70,7 @@
                                 <button type="button" class="input_number_decrement">
                                     <i class="fal fa-minus"></i>
                                 </button>
-                                <input class="input_number" name="quantity" type="number" min="1" value="1">
+                                <input class="input_number" name="quantity" type="number" min="1" value="1" max="{{ $product_info->quantity }}">
                                 <button type="button" class="input_number_increment">
                                     <i class="fal fa-plus"></i>
                                 </button>
