@@ -161,4 +161,5 @@ Route::post('/subscribe/submit', [SubscriberController::class, 'index'])->name('
 
 // team
 Route::get('/team', [TeamController::class, 'index'])->name('team');
-Route::post('/team/member/store', [TeamController::class, 'store']);
+Route::post('/team/member/store', [TeamController::class, 'store'])->name('store');
+Route::post('/team/member/delete', [TeamController::class, 'destroy'])->name('teamMember.delete');

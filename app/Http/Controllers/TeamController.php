@@ -19,6 +19,12 @@ class TeamController extends Controller
     // store
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'designation' => 'required',
+            'photo' => 'required',
+            'photo' => 'mimes:jpg,jpeg,png,bmp',
+         ]);
         $team_member_id = Team::insertGetId([
             'name' => $request->name,
             'designation' => $request->designation,
@@ -32,5 +38,16 @@ class TeamController extends Controller
             'photo' => $file_name,
         ]);
         return redirect()->back();
+    }
+    // destroy
+    public function destroy(Request $request)
+    {
+        $team_member_id = $request->deletedId;
+        $team_info = Team::find($team_member_id);
+        $image = $team_info->photo;
+        $delete_form = public_path('/dashboard_assets/images/team/'.$image);
+        unlink($delete_form);
+        Team::find($team_member_id)->delete();
+        return redirect()->back()->with('status', 'Team member deleted successfully!');
     }
 }
