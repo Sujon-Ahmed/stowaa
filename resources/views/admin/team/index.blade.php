@@ -40,7 +40,7 @@
                                     <img src="{{ asset('/dashboard_assets/images/team') }}/{{ $member->photo }}" alt="" width="100">
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i></button>
+                                    <button type="button" value="{{ $member->id }}" class="btn btn-outline-success btn-sm editBtn"><i class="fa fa-edit"></i></button>
                                     <button type="button" value="{{ $member->id }}" class="btn btn-outline-danger btn-sm deleteBtn"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
@@ -61,7 +61,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">add new student</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">add new member</h5>
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                 </div>
                 <form action="{{ url('/team/member/store') }}" method="POST" enctype="multipart/form-data">
@@ -120,18 +120,79 @@
             </div>
         </div>
     </div>
+    {{-- modal for edit team member --}}
+    <div class="modal fade" id="editMemberModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">edit / update member information</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <form action="{{ route('member.update') }}" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        @csrf
+                        <input type="hidden" name="updateHiddenId" id="updateHiddenId">
+                        <div class="form-group">
+                            <label for="updatedName">name</label>
+                            <input type="text" name="updatedName" id="updatedName" class="form-control" value="{{ old('updatedName') }}">
+                            @error('updatedName')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="updatedDesignation">designation</label>
+                            <input type="text" name="updatedDesignation" id="updatedDesignation" class="form-control" value="{{ old('updatedDesignation') }}">
+                            @error('updatedDesignation')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="updatedPhoto">photo</label>
+                            <input type="file" name="updatedPhoto" id="updatedPhoto" class="form-control">
+                            @error('updatedPhoto')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success btn-sm">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer_script')
     <script>
         $(document).ready(function() {
+            // scripts for add new member
             $(document).on('click', '.addbtn', function() {
                 $('#addNewMember').modal('show');
             });
+            // scripts for delete team member
             $('.deleteBtn').click(function (e) { 
                 e.preventDefault();
                 let deleteBtnId = $(this).val();
                 $('#deleteConfirmModal').modal('show');
                 $('#deletedId').val(deleteBtnId);
+            });
+            // scripts for edit team member
+            $('.editBtn').click(function (e) { 
+                e.preventDefault();
+                let editBtnId = $(this).val();
+                $('#editMemberModal').modal('show');
+                $.ajax({
+                    type: "GET",
+                    url: "/getMemberInfo/" + editBtnId,
+                    dataType: "json",
+                    success: function (response) {
+                        // console.log(response);
+                        $('#updateHiddenId').val(editBtnId);
+                        $('#updatedName').val(response.member_info.name);
+                        $('#updatedDesignation').val(response.member_info.designation);
+                    }
+                });
             });
         });
     </script>

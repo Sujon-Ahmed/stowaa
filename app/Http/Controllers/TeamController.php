@@ -39,6 +39,36 @@ class TeamController extends Controller
         ]);
         return redirect()->back();
     }
+    // edit
+    public function edit($id)
+    {
+        $member_info = Team::find($id);
+        return response()->json([
+            'status' => 200,
+            'member_info' => $member_info,
+        ]);
+    }
+    // update
+    public function update(Request $request)
+    {
+        if ($request->updatedPhoto != '') {
+            $team_info = Team::find($request->updateHiddenId);
+            if ($team_info->photo != '') {
+                unlink(public_path('/dashboard_assets/images/team/'.$team_info->photo));
+            }
+            $image_name = $request->updateHiddenId.'.'.$request->updatedPhoto->getClientOriginalExtension();
+            Image::make($request->updatedPhoto)->resize(540, 540)->save(public_path('/dashboard_assets/images/team/'.$image_name));
+            Team::find($request->updateHiddenId)->update([
+                'photo' => $image_name,
+            ]);
+        }
+
+        Team::find($request->updateHiddenId)->update([
+            'name' => $request->updatedName,
+            'designation' => $request->updatedDesignation,
+        ]);
+        return redirect()->back()->with('status', 'team member information updated successfully!');
+    }
     // destroy
     public function destroy(Request $request)
     {

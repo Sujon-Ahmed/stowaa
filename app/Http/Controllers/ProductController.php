@@ -39,7 +39,7 @@ class ProductController extends Controller
         $all_categories = Category::all();
         $all_subcategories = Subcategory::all();
         $product_info = Product::find($id);
-        return view('admin/products/edit', [
+        return view('admin.products.edit', [
             'all_categories'=>$all_categories,
             'all_subcategories'=>$all_subcategories,
             'product_info'=>$product_info,
