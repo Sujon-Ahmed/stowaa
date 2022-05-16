@@ -15,6 +15,7 @@
 	<link href="{{asset('dashboard_assets/vendor/owl-carousel/owl.carousel.cs')}}s" rel="stylesheet">
     <link href="{{asset('dashboard_assets/css/style.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 </head>
 <body>
 
@@ -555,6 +556,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<!--**********************************
             Chat box End
         ***********************************-->
@@ -580,6 +582,12 @@
 									<input type="text" class="form-control" placeholder="Search here...">
 								</div>
 							</li>
+							<li class="nav-item dropdown notification_dropdown">
+                                <a href="{{ route('index') }}" title="Browse Website" target="_blank" class="nav-link  ai-icon">
+                                    <i class="fa fa-globe-asia"></i>
+									<div class="pulse-css"></div>
+                                </a>
+                            </li>
 							<li class="nav-item dropdown notification_dropdown">
                                 <a class="nav-link  ai-icon" href="javascript:void(0)" role="button" data-toggle="dropdown">
                                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">

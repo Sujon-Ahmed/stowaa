@@ -12,7 +12,7 @@ class CustomerAuthenticationController extends Controller
 {
     public function customer_authentication()
     {
-        return view('/frontend/customer_authentication');
+        return view('frontend.customer_authentication');
     }
 
     public function customer_login_authentication(Request $request) 
@@ -26,6 +26,11 @@ class CustomerAuthenticationController extends Controller
 
     public function customer_register_authentication(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required | unique:customers',
+            'password' => 'required | min:8',
+        ]);
         Customer::insert([
             'name' => $request->name,
             'email' => $request->email,
