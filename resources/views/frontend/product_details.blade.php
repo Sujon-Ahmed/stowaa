@@ -60,6 +60,7 @@
                         <div class="item_price">
                             <span>৳ <span id="after_discount_price">{{$product_info->after_discount}}</span></span>
                             <del>৳ {{$product_info->product_price}}</del>
+                            <small>({{ $product_info->quantity }} available)</small>
                         </div>
                         <hr>
                         <form action="{{url('/cart/insert')}}" method="POST">

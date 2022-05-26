@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\Order;
@@ -13,11 +14,13 @@ class FrontendController extends Controller
 {
     public function index()
     {
+        $brands = Brand::where('status', '=', '1')->get();
         $all_categories = Category::all();
         $all_products = Product::take(6)->get();
         return view('frontend.index', [
-            'all_categories'=>$all_categories,
-            'all_products'=>$all_products,
+            'all_categories' => $all_categories,
+            'all_products' => $all_products,
+            'brands' => $brands,
         ]);
     }
 
