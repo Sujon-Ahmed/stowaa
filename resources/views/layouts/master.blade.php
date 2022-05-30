@@ -109,7 +109,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="{{ route('home') }}" class="brand-logo">
+            <a href="{{ route('dashboard') }}" class="brand-logo">
                 <img class="logo-abbr" src="{{ asset('dashboard_assets/images/favourite_icon_1.png') }}" alt="">
                 <img class="logo-compact" src="{{ asset('dashboard_assets/images/logo_1x.png') }}" alt="">
                 <img class="brand-title" src="{{ asset('dashboard_assets/images/logo_1x.png') }}" alt="">
@@ -989,7 +989,7 @@
         <div class="deznav">
             <div class="deznav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li><a href="{{ route('home') }}" aria-expanded="false">
+                    <li><a href="{{ route('dashboard') }}" aria-expanded="false">
                             <i class="flaticon-381-networking"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
