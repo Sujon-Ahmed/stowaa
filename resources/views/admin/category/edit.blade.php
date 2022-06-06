@@ -15,7 +15,7 @@
                         <h5>Edit Category</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{url('/category/update')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{url('/admin/category/update')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="my-1">
                                 <label for="category_name" class="mb-1">Category Name</label>

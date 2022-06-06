@@ -20,7 +20,7 @@
                                 <span>{{session('success')}}</span>
                             </div>
                         @endif
-                        <form action="{{url('/category/insert')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{url('/admin/category/insert')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="my-1">
                                 <label for="category_name" class="my-1">Category Name</label>

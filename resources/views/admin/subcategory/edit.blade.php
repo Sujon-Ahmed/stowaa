@@ -22,7 +22,7 @@
                         @if (session('exist'))
                             <div class="alert alert-danger" role="alert">{{session('exist')}}</div>
                         @endif
-                        <form action="{{url('/subcategory/update')}}" method="POST">
+                        <form action="{{url('admin/subcategory/update')}}" method="POST">
                             @csrf
                             <div class="py-2">
                                 <select name="category_id" class="form-control">

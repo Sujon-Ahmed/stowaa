@@ -80,14 +80,14 @@ class subcategoryController extends Controller
         ]);
 
         if(Subcategory::where('category_id',$request->category_id)->where('subcategory_name', $request->subcategory_name)->exists()) {
-            return back()->with('exist', 'Subcategory Already Exist in Selected Category!');
+            return redirect()->back()->with('exist', 'Subcategory Already Exist in Selected Category!');
         } else {
             Subcategory::find($request->subcategory_id)->update([
                 'category_id'=>$request->category_id,
                 'subcategory_name'=>$request->subcategory_name,
                 'created_at'=>Carbon::now(),
             ]);
-            return redirect('/subcategory/index')->with('success_update', 'Subcategory Updated Successfully');
+            return redirect()->back()->with('success_update', 'Subcategory Updated Successfully');
         }   
     }
 }

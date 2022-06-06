@@ -64,7 +64,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">add new member</h5>
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                 </div>
-                <form action="{{ url('/team/member/store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/team/member/store') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <div class="form-group">
@@ -184,7 +184,7 @@
                 $('#editMemberModal').modal('show');
                 $.ajax({
                     type: "GET",
-                    url: "/getMemberInfo/" + editBtnId,
+                    url: "admin/getMemberInfo/" + editBtnId,
                     dataType: "json",
                     success: function (response) {
                         // console.log(response);

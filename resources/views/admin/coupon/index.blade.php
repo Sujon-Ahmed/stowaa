@@ -48,7 +48,7 @@
                <h5>Add Coupon</h5>
            </div>
            <div class="card-body">
-                <form action="{{ url('/coupon/insert') }}" method="POST">
+                <form action="{{ url('admin/coupon/insert') }}" method="POST">
                     @csrf
                     <div class="mb-2">
                         <label for="coupon_code" class="mb-1 form-label">Coupon Code</label>

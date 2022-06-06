@@ -15,7 +15,7 @@
                 <h5>Add Product</h5>
             </div>
             <div class="card-body">
-                <form action="{{url('/product/insert')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{url('admin/product/insert')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         {{-- category --}}
@@ -97,7 +97,7 @@
 
             $.ajax ({
                 type:'POST',
-                url:'/getCategory',
+                url:'/admin/getCategory',
                 data:{'category_id':category_id},
                 success:function(data) {
                    $('#subcategory_id').html(data);

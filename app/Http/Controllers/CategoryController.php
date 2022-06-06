@@ -115,7 +115,7 @@ class CategoryController extends Controller
         Category::find($request->id)->update([
             'category_name'=>$request->category_name,
         ]);
-        return redirect('category')->with('category_update', 'Category Update Successfully');
+        return redirect()->back()->with('category_update', 'Category Update Successfully');
     }
     // category mark all delete
     public function category_mark_delete(Request $request)
