@@ -70,6 +70,7 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('/brand', [BrandController::class, 'index'])->name('brand.index');
     Route::post('/brand/store', [BrandController::class, 'store'])->name('brand.store');
     Route::post('/change/status', [BrandController::class, 'status_change'])->name('change-status');
+    Route::get('/brand/delete/{id}', [BrandController::class, 'brandDelete'])->name('brand.delete');
 
     // Category
     // Route::view('/category','category.category');

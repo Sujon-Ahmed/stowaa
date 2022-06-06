@@ -33,4 +33,11 @@ class BrandController extends Controller
         $status->status = $request->status;
         $status->save();
     }
+    // brand delete
+    public function brandDelete($id)
+    {
+        $brand = Brand::find($id);
+        $brand->delete();
+        return redirect()->back()->with('status', 'brand delete successfully!');
+    }
 }

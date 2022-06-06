@@ -37,9 +37,8 @@
                                     <label class="switch">
                                         <input type="checkbox" name="status" onchange="status_change(this)" value="{{ $brand->id }}" {{ $brand->status == '1' ? 'checked' : '' }}>
                                         <span class="slider round"></span>
-                                      </label>
-                                    <button type="button" value="{{ $brand->id }}" class="btn btn-outline-success btn-sm editBtn"><i class="fa fa-edit"></i></button>
-                                    <button type="button" value="{{ $brand->id }}" class="btn btn-outline-danger btn-sm deleteBtn"><i class="fa fa-trash"></i></button>
+                                      </label>                                    
+                                    <a href="{{ route('brand.delete', $brand->id) }}" onclick="javascript:return confirm('Are you sure delete this!')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             @endforeach
