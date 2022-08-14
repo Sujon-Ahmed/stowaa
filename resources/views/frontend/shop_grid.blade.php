@@ -94,15 +94,6 @@
 
                             <div class="col col-md-4">
 
-                                {{-- <div class="slt clearfix">
-                                    <select onchange="sortProduct()" name="sort" id="sort">
-                                        <option>Select Your Option</option>
-                                        <option value="sortName">Sorting By Name</option>
-                                        <option value="sortPriceASC">Price - Low to High</option>
-                                        <option value="sortPriceDESC">Price - High to Low</option>
-                                        <option value="sortNewest">Sorting By Newest</option>
-                                    </select>
-                                </div> --}}
                                 <select onchange="sortProduct()" id="sortby" class="form-select">
                                     <option {{ ($sort_text == 'default' ? 'selected' : '') }} value="default">Select Your Option</option>
                                     <option {{ ($sort_text == 'sortNewest' ? 'selected' : '') }} value="sortNewest">Sorting By Newest</option>
