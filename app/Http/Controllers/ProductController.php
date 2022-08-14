@@ -21,13 +21,13 @@ class ProductController extends Controller
             'all_categories'=>$all_categories,
             'all_subcategories'=>$all_subcategories,
         ]);
-        
+
     }
 
     public function view_products()
     {
         $all_products = Product::all();
-        return view('admin/products/view', 
+        return view('admin/products/view',
         [
             'all_products'=>$all_products,
         ]);
@@ -92,9 +92,9 @@ class ProductController extends Controller
         Product::find($product_id)->update([
             'product_preview'=>$preview_name,
         ]);
- 
+
         $loop = 1;
-        
+
         foreach($request->product_thumbnail as $thumbnail) {
             $thumbnail_extension =  $thumbnail->getClientOriginalExtension();
             $thumbnail_name = $product_id.'-'.$loop.'.'.$thumbnail_extension;
@@ -110,7 +110,7 @@ class ProductController extends Controller
 
     }
 
-    public function product_delete($id) 
+    public function product_delete($id)
     {
         $product_image = Product::where('id', $id)->first()->product_preview;
         $delete_form = public_path('/uploads/products/preview/'.$product_image);

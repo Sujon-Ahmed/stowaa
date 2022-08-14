@@ -46,7 +46,7 @@
 
     <!-- body_wrap - start -->
     <div class="body_wrap">
-        
+
         <!-- backtotop - start -->
         <div class="backtotop">
             <a href="#" class="scroll">
@@ -80,7 +80,7 @@
                                             </select>
                                         </div>
                                     </li>
-                                    
+
                                 </ul>
                             </div>
                             <div class="col col-md-6">
@@ -113,10 +113,10 @@
                                                 @endforeach
                                         </select>
                                     </div>
-                                    <div class="form_item">                                           
+                                    <div class="form_item">
                                         <input type="search" id="search-product" name="product_name" placeholder="Search Prudcts...">
                                         <button type="submit" class="search_btn"><i class="far fa-search"></i></button>
-                                    </div>                                 
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -189,11 +189,11 @@
                                     <li>
                                         @auth('customer')
                                             <a href="{{url('/customer/account/')}}">{{Auth::guard('customer')->user()->name}}</a>
-                                            @else 
+                                            @else
                                             <a href="{{url('/customer/authentication')}}">My Account</a>
                                         @endauth
                                     </li>
-                                    
+
                                     <li>
                                         <a href="#">
                                             <svg role="img" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" stroke="#051d43" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" fill="none" color="#2329D6"> <title id="personIconTitle">Person</title> <path d="M4,20 C4,17 8,17 10,15 C11,14 8,14 8,9 C8,5.667 9.333,4 12,4 C14.667,4 16,5.667 16,9 C16,14 13,14 14,15 C16,17 20,17 20,20"/> </svg>
@@ -238,7 +238,7 @@
                     <span>TK {{$total}}</span>
                 </li>
             </ul>
-           
+
             <ul class="btns_group ul_li_block clearfix">
                 <li><a class="btn btn_primary" href="{{route('cart')}}">View Cart</a></li>
             </ul>
@@ -248,7 +248,7 @@
     </div>
     <!-- sidebar cart - end
     ================================================== -->
-        
+
         @yield('content')
          <!-- newsletter_section - start
     ================================================== -->
@@ -273,7 +273,7 @@
     </section>
     <!-- newsletter_section - end
     ================================================== -->
-        
+
         <!-- footer_section - start
         ================================================== -->
         <footer class="footer_section">
@@ -296,7 +296,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="col col-lg-2 col-md-3 col-sm-6">
                             <div class="footer_widget footer_useful_links">
                                 <h3 class="footer_widget_title text-uppercase">Quick Links</h3>
@@ -309,7 +309,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="col col-lg-2 col-md-3 col-sm-6">
                             <div class="footer_widget footer_useful_links">
                                 <h3 class="footer_widget_title text-uppercase">Custom area</h3>
@@ -322,7 +322,7 @@
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div class="col col-lg-4 col-md-6 col-sm-6">
                             <div class="footer_widget footer_contact">
                                 <h3 class="footer_widget_title text-uppercase">Contact Onfo</h3>
@@ -352,7 +352,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer_bottom">
                 <div class="container">
                     <div class="row align-items-center">
@@ -361,7 +361,7 @@
                                 ©2021 <a href="#!">stowaa</a>. All Rights Reserved.
                             </p>
                         </div>
-                        
+
                         <div class="col col-md-6">
                             <div class="payment_method">
                                 <h4>Payment:</h4>
@@ -395,8 +395,9 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     {{-- auto complete cdn link --}}
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
     <script>
-        
+
         var availableTags = [];
         $.ajax({
             method: "GET",
@@ -407,27 +408,15 @@
             }
         });
 
-        function startAutoComplete(availableTags) 
-        {            
+        function startAutoComplete(availableTags)
+        {
             $( "#search-product" ).autocomplete({
                 source: availableTags
             });
         }
-      
+
     </script>
-    <!--Start of Tawk.to Script-->
-    {{-- <script>
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/6243c3970bfe3f4a877061f7/1fvcb82f4';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script> --}}
-    <!--End of Tawk.to Script-->
+    
     @yield('footer_script')
 </body>
 </html>

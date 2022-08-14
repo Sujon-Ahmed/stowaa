@@ -8,12 +8,36 @@ use Illuminate\Http\Request;
 
 class ShopGridController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $total_products = Product::all()->count();
         $categories = Category::all();
-        $products = Product::orderBy('id', 'desc')->paginate(9);
+        $sort_text = '';
+        if ($request->sort != null) {
+            $sort = $request->sort;
+            if ($sort === 'default') {
+                $sort_text = 'default';
+                $products = Product::orderBy('id', 'desc')->paginate(9);
+            } else if ($sort === 'sortNewest') {
+                $sort_text = 'sortNewest';
+                $products = Product::orderBy('created_at', 'desc')->paginate(9);
+            } else if ($sort === 'sortOldest') {
+                $sort_text = 'sortOldest';
+                $products = Product::orderBy('created_at', 'asc')->paginate(9);
+            } else if ($sort === 'sortPriceASC') {
+                $sort_text = 'sortPriceASC';
+                $products = Product::orderBy('product_price', 'asc')->paginate(9);
+            } else if ($sort === 'sortPriceDESC') {
+                $sort_text = 'sortPriceDESC';
+                $products = Product::orderBy('product_price', 'desc')->paginate(9);
+            }
+
+        } else {
+            $products = Product::orderBy('id', 'desc')->paginate(9);
+        }
+
         return view('frontend.shop_grid', [
+            'sort_text' => $sort_text,
             'products' => $products,
             'categories' => $categories,
             'total_products' => $total_products,
@@ -31,7 +55,4 @@ class ShopGridController extends Controller
             'total_products' => $total_products,
         ]);
     }
-
-  
-
 }
