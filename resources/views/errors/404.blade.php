@@ -22,10 +22,11 @@
                 <h3>Oops! Page Not Found!</h3>
                 <p>We’re sorry but we can’t seem to find the page you requested. This might be because you have
                 typed the web address incorrectly.</p>
-                <a href="{{ route('/') }}" class="btn btn_primary">Back to home</a>
+                <a href="{{ url('/') }}" class="btn btn_primary">Back to home</a>
             </div>
         </div>
     </div>
 </section>
 <!-- end error-404-section -->
 @endsection
+
